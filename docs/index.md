@@ -40,6 +40,16 @@ You can test this config by creating a `test.tf` and run terraform commands from
 - Build the infrastructure: `terraform apply`
 
 ```hcl
+variable "project_id" {
+  type        = string
+  description = "Your project ID."
+}
+
+variable "dns_zone" {
+  type        = string
+  description = "The DNS Zone used for testing records."
+}
+
 terraform {
   required_providers {
     scaleway = {
@@ -50,18 +60,31 @@ terraform {
 }
 
 provider "scaleway" {
-  zone            = "fr-par-1"
-  region          = "fr-par"
+  zone   = "fr-par-1"
+  region = "fr-par"
 }
 
-resource "scaleway_instance_ip" "public_ip" {}
+resource "scaleway_instance_ip" "public_ip" {
+  project_id = var.project_id
+}
+resource "scaleway_instance_ip" "public_ip_backup" {
+  project_id = var.project_id
+}
 
 resource "scaleway_instance_volume" "data" {
+  project_id = var.project_id
   size_in_gb = 30
-  type = "l_ssd"
+  type       = "l_ssd"
+}
+
+resource "scaleway_instance_volume" "data_backup" {
+  project_id = var.project_id
+  size_in_gb = 10
+  type       = "l_ssd"
 }
 
 resource "scaleway_instance_security_group" "www" {
+  project_id              = var.project_id
   inbound_default_policy  = "drop"
   outbound_default_policy = "accept"
 
@@ -83,14 +106,15 @@ resource "scaleway_instance_security_group" "www" {
 }
 
 resource "scaleway_instance_server" "web" {
-  type  = "DEV1-L"
-  image = "ubuntu_focal"
+  project_id = var.project_id
+  type       = "DEV1-L"
+  image      = "ubuntu_focal"
 
-  tags = [ "front", "web" ]
+  tags = ["front", "web"]
 
   ip_id = scaleway_instance_ip.public_ip.id
 
-  additional_volume_ids = [ scaleway_instance_volume.data.id ]
+  additional_volume_ids = [scaleway_instance_volume.data.id]
 
   root_volume {
     # The local storage of a DEV1-L instance is 80 GB, subtract 30 GB from the additional l_ssd volume, then the root volume needs to be 50 GB.
@@ -98,6 +122,57 @@ resource "scaleway_instance_server" "web" {
   }
 
   security_group_id = scaleway_instance_security_group.www.id
+}
+
+resource "scaleway_instance_server" "web_backup" {
+  project_id = var.project_id
+  type       = "DEV1-S"
+  image      = "ubuntu_focal"
+
+  tags = ["front", "web", "backup"]
+
+  ip_id = scaleway_instance_ip.public_ip_backup.id
+
+  additional_volume_ids = [scaleway_instance_volume.data_backup.id]
+
+  root_volume {
+    # The local storage of a DEV1-S instance is 20 GB, subtract 10 GB from the additional l_ssd volume, then the root volume needs to be 10 GB.
+    size_in_gb = 10
+  }
+
+  security_group_id = scaleway_instance_security_group.www.id
+}
+
+resource "scaleway_domain_record" "web_weighted" {
+  dns_zone = var.dns_zone
+  name     = "web"
+  type     = "A"
+  data     = scaleway_instance_server.web.public_ip
+  ttl      = 3600
+  weighted {
+    ip     = scaleway_instance_server.web.public_ip
+    weight = 10
+  }
+  weighted {
+    ip     = scaleway_instance_server.web_backup.public_ip
+    weight = 5
+  }
+}
+
+resource "scaleway_domain_record" "web_cname" {
+  dns_zone = var.dns_zone
+  name     = "www"
+  type     = "CNAME"
+  data     = "web.${var.dns_zone}."
+  ttl      = 3600
+}
+
+resource "scaleway_domain_record" "web_alias" {
+  dns_zone = var.dns_zone
+  name     = ""
+  type     = "ALIAS"
+  data     = "web.${var.dns_zone}."
+  ttl      = 3600
 }
 ```
 
