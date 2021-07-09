@@ -156,7 +156,7 @@ The following arguments are supported:
     - `data` - (Required) The data of the view record
 
 
-- `weighted` - (Optional) You provide a list of IPs with their corresponding `weights These weights are used to proportionally direct requests to each IP. Depending on the weight of a record more or fewer requests are answered with its related IP compared to the others in the list. *(Can be more than 1)* [Documentation and usage example](https://www.scaleway.com/en/docs/scaleway-dns/#-Weight-Records)
+- `weighted` - (Optional) You provide a list of IPs with their corresponding weights. These weights are used to proportionally direct requests to each IP. Depending on the weight of a record more or fewer requests are answered with its related IP compared to the others in the list. *(Can be more than 1)* [Documentation and usage example](https://www.scaleway.com/en/docs/scaleway-dns/#-Weight-Records)
     - `ip` - (Required) The weighted IP
     - `weight` - (Required) The weight of the IP
 
