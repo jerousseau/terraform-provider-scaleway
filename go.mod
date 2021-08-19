@@ -26,7 +26,7 @@ require (
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/mitchellh/mapstructure v1.4.1 // indirect
 	github.com/oklog/run v1.1.0 // indirect
-	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.7.0.20210427131120-0f06a0676b46
+	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.7.0.20210817142252-2836d8ffcc09
 	github.com/stretchr/testify v1.7.0
 	github.com/ulikunitz/xz v0.5.10 // indirect
 	golang.org/x/crypto v0.0.0-20210616213533-5ff15b29337e // indirect
