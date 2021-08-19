@@ -13,6 +13,7 @@ import (
 )
 
 var (
+	// prevent using production domain for testing
 	reservedDomains = []*regexp.Regexp{
 		regexp.MustCompile(`.*iliad.*`),
 		regexp.MustCompile(`.*\.free\..*`),
@@ -556,7 +557,7 @@ func testAccCheckScalewayDomainRecordExists(tt *TestTools, n string) resource.Te
 			return fmt.Errorf("resource not found: %s", n)
 		}
 
-		domainAPI := domainAPI(tt.Meta)
+		domainAPI := newDomainAPI(tt.Meta)
 		listDNSZones, err := domainAPI.ListDNSZoneRecords(&domain.ListDNSZoneRecordsRequest{
 			DNSZone: rs.Primary.Attributes["dns_zone"],
 		})
@@ -583,7 +584,7 @@ func testAccCheckScalewayDomainRecordDestroy(tt *TestTools) resource.TestCheckFu
 			}
 
 			// check if the zone still exists
-			domainAPI := domainAPI(tt.Meta)
+			domainAPI := newDomainAPI(tt.Meta)
 			listDNSZones, err := domainAPI.ListDNSZoneRecords(&domain.ListDNSZoneRecordsRequest{
 				DNSZone: rs.Primary.Attributes["dns_zone"],
 			})

@@ -13,7 +13,7 @@ const (
 )
 
 // domainAPI returns a new domain API.
-func domainAPI(m interface{}) *domain.API {
+func newDomainAPI(m interface{}) *domain.API {
 	meta := m.(*Meta)
 
 	return domain.NewAPI(meta.scwClient)
@@ -22,9 +22,9 @@ func domainAPI(m interface{}) *domain.API {
 func flattenDomainData(data string, recordType domain.RecordType) interface{} {
 	switch recordType {
 	case domain.RecordTypeMX: // API return this format: "{priority} {data}"
-		dataSplitted := strings.SplitN(data, " ", 2)
-		if len(dataSplitted) == 2 {
-			return dataSplitted[1]
+		dataSplit := strings.SplitN(data, " ", 2)
+		if len(dataSplit) == 2 {
+			return dataSplit[1]
 		}
 	}
 

@@ -21,6 +21,7 @@ resource "scaleway_domain_record" "www" {
   data     = "1.2.3.4"
   ttl      = 3600
 }
+
 resource "scaleway_domain_record" "www2" {
   dns_zone = "domain.tld"
   name     = "www"
@@ -28,6 +29,7 @@ resource "scaleway_domain_record" "www2" {
   data     = "1.2.3.5"
   ttl      = 3600
 }
+
 resource "scaleway_domain_record" "mx" {
   dns_zone = "domain.tld"
   name     = ""
@@ -36,6 +38,7 @@ resource "scaleway_domain_record" "mx" {
   ttl      = 3600
   priority = 10
 }
+
 resource "scaleway_domain_record" "mx2" {
   dns_zone = "domain.tld"
   name     = ""
@@ -55,12 +58,14 @@ resource "scaleway_domain_record" "geo_ip" {
   type     = "A"
   data     = "1.2.3.4"
   ttl      = 3600
+
   geo_ip {
     matches {
       continents = ["EU"]
       countries  = ["FR"]
       data       = "1.2.3.5"
     }
+    
     matches {
       continents = ["NA"]
       data       = "4.3.2.1"
@@ -74,6 +79,7 @@ resource "scaleway_domain_record" "http_service" {
   type     = "A"
   data     = "1.2.3.4"
   ttl      = 3600
+
   http_service {
     ips          = ["1.2.3.5", "1.2.3.6"]
     must_contain = "up"
@@ -89,10 +95,12 @@ resource "scaleway_domain_record" "view" {
   type     = "A"
   data     = "1.2.3.4"
   ttl      = 3600
+
   view {
     subnet = "100.0.0.0/16"
     data   = "1.2.3.5"
   }
+
   view {
     subnet = "100.1.0.0/16"
     data   = "1.2.3.6"
@@ -105,10 +113,12 @@ resource "scaleway_domain_record" "weighted" {
   type     = "A"
   data     = "1.2.3.4"
   ttl      = 3600
+
   weighted {
     ip     = "1.2.3.5"
     weight = 1
   }
+
   weighted {
     ip     = "1.2.3.6"
     weight = 2
@@ -130,7 +140,7 @@ The following arguments are supported:
 
 - `data` - (Required) The content of the record (an IPv4 for an `A`, a string for a `TXT`...).
 
-- `ttl` - (Optional, default: `3600`) Time To Tive of the record.
+- `ttl` - (Optional, default: `3600`) Time To Tive of the record in seconds.
   
 - `priority` - (Optional, default: `0`) The priority of the record (mostly used with an `MX` record)
 
@@ -158,7 +168,7 @@ The following arguments are supported:
 
 - `weighted` - (Optional) You provide a list of IPs with their corresponding weights. These weights are used to proportionally direct requests to each IP. Depending on the weight of a record more or fewer requests are answered with its related IP compared to the others in the list. *(Can be more than 1)* [Documentation and usage example](https://www.scaleway.com/en/docs/scaleway-dns/#-Weight-Records)
     - `ip` - (Required) The weighted IP
-    - `weight` - (Required) The weight of the IP
+    - `weight` - (Required) The weight of the IP as an integer UInt32.
 
 ## Multiple records
 

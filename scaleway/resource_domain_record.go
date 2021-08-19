@@ -197,7 +197,7 @@ func resourceScalewayDomainRecord() *schema.Resource {
 			},
 			"weighted": {
 				Type:          schema.TypeList,
-				Description:   "Return record vased on weigh",
+				Description:   "Return record based on weight",
 				Optional:      true,
 				ConflictsWith: []string{"geo_ip", "http_service", "view"},
 				Elem: &schema.Resource{
@@ -222,7 +222,7 @@ func resourceScalewayDomainRecord() *schema.Resource {
 }
 
 func resourceScalewayDomainRecordCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	domainAPI := domainAPI(meta)
+	domainAPI := newDomainAPI(meta)
 
 	dnsZone := d.Get("dns_zone").(string)
 	geoIP, okGeoIP := d.GetOk("geo_ip")
@@ -257,7 +257,7 @@ func resourceScalewayDomainRecordCreate(ctx context.Context, d *schema.ResourceD
 }
 
 func resourceScalewayDomainRecordRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	domainAPI := domainAPI(meta)
+	domainAPI := newDomainAPI(meta)
 	var record *domain.Record
 
 	if strings.Contains(d.Id(), "/") {
@@ -328,7 +328,7 @@ func resourceScalewayDomainRecordRead(ctx context.Context, d *schema.ResourceDat
 }
 
 func resourceScalewayDomainRecordUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	domainAPI := domainAPI(meta)
+	domainAPI := newDomainAPI(meta)
 
 	if d.HasChangesExcept("dns_zone", "keep_empty_zone", "name", "type") {
 		id := d.Id()
@@ -367,7 +367,7 @@ func resourceScalewayDomainRecordUpdate(ctx context.Context, d *schema.ResourceD
 }
 
 func resourceScalewayDomainRecordDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
-	domainAPI := domainAPI(meta)
+	domainAPI := newDomainAPI(meta)
 
 	id := d.Id()
 	_, err := domainAPI.UpdateDNSZoneRecords(&domain.UpdateDNSZoneRecordsRequest{
