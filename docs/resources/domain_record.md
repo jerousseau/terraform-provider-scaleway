@@ -202,8 +202,8 @@ The following arguments are supported:
 
 - `geo_ip` - (Optional) The Geo IP feature provides DNS resolution, based on the user’s geographical location. You can define a default IP that resolves if no Geo IP rule matches, and specify IPs for each geographical zone. [Documentation and usage example](https://www.scaleway.com/en/docs/scaleway-dns/#-Geo-IP-Records)
     - `matches` - (Required) The list of matches. *(Can be more than 1)*
-        - `countries` - (Optional) List of countries (eg: `FR` for France, `US` for the United States, `GB` for Great Britain...)
-        - `continents` - (Optional) List of continents (eg: `EU` for Europe, `NA` for North America, `AS` for Asia...)
+        - `countries` - (Optional) List of countries (eg: `FR` for France, `US` for the United States, `GB` for Great Britain...). [List of all countries code](https://api.scaleway.com/domain-private/v2beta1/countries)
+        - `continents` - (Optional) List of continents (eg: `EU` for Europe, `NA` for North America, `AS` for Asia...). [List of all continents code](https://api.scaleway.com/domain-private/v2beta1/continents)
         - `data` (Required) The data of the match result
 
 

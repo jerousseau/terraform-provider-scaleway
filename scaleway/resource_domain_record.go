@@ -101,7 +101,7 @@ func resourceScalewayDomainRecord() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MinItems:    1,
-										Description: "List of countries (eg: FR for France, US for the United States, GB for Great Britain...)",
+										Description: "List of countries (eg: FR for France, US for the United States, GB for Great Britain...). List of all countries code: https://api.scaleway.com/domain-private/v2beta1/countries",
 										Elem: &schema.Schema{
 											Type:         schema.TypeString,
 											ValidateFunc: validation.StringLenBetween(2, 2),
@@ -111,7 +111,7 @@ func resourceScalewayDomainRecord() *schema.Resource {
 										Type:        schema.TypeList,
 										Optional:    true,
 										MinItems:    1,
-										Description: "List of continents (eg: EU for Europe, NA for North America, AS for Asia...)",
+										Description: "List of continents (eg: EU for Europe, NA for North America, AS for Asia...). List of all continents code: https://api.scaleway.com/domain-private/v2beta1/continents",
 										Elem: &schema.Schema{
 											Type:         schema.TypeString,
 											ValidateFunc: validation.StringLenBetween(2, 2),
@@ -260,6 +260,7 @@ func resourceScalewayDomainRecordRead(ctx context.Context, d *schema.ResourceDat
 	domainAPI := newDomainAPI(meta)
 	var record *domain.Record
 
+	// check if this is an inline import. Like: "terraform import scaleway_domain_record.www subdomain.domain.tld/11111111-1111-1111-1111-111111111111"
 	if strings.Contains(d.Id(), "/") {
 		tab := strings.SplitN(d.Id(), "/", -1)
 		if len(tab) != 2 {
@@ -356,7 +357,7 @@ func resourceScalewayDomainRecordUpdate(ctx context.Context, d *schema.ResourceD
 					},
 				},
 			},
-			ReturnAllRecords: nil,
+			ReturnAllRecords: scw.BoolPtr(false),
 		})
 		if err != nil {
 			return diag.FromErr(err)
@@ -379,7 +380,7 @@ func resourceScalewayDomainRecordDelete(ctx context.Context, d *schema.ResourceD
 				},
 			},
 		},
-		ReturnAllRecords: nil,
+		ReturnAllRecords: scw.BoolPtr(false),
 	})
 	if err != nil {
 		return diag.FromErr(err)
