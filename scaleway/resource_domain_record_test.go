@@ -1,11 +1,12 @@
 package scaleway
 
 import (
+	"flag"
 	"fmt"
+	"os"
 	"regexp"
 	"testing"
 
-	"github.com/hashicorp/go-uuid"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	domain "github.com/scaleway/scaleway-sdk-go/api/domain/v2beta1"
@@ -25,6 +26,15 @@ var (
 )
 
 func init() {
+	// if domain is set, use it
+	testDomainPtr := flag.String("test-domain", os.Getenv("TF_TEST_DOMAIN"), "Test domain")
+	if testDomainPtr != nil && *testDomainPtr != "" {
+		testDomain = *testDomainPtr
+		l.Infof("start domain record test with set domain: %s", testDomain)
+
+		return
+	}
+
 	// retrieve the first domain is found
 	scwClient, err := sharedClientForZone(scw.Zone(""))
 	if err != nil {
@@ -69,14 +79,9 @@ func init() {
 
 func TestAccScalewayDomainRecord_Basic(t *testing.T) {
 	tt := NewTestTools(t)
-	// Please note: don't use `defer tt.Cleanup()` to avoid store personnal domain in cassette testdata
+	defer tt.Cleanup()
 
-	uuid, err := uuid.GenerateUUID()
-	if err != nil {
-		l.Errorf("error when generate UUID: %s", err)
-		return
-	}
-	testDNSZone := fmt.Sprintf("%s.%s", uuid, testDomain)
+	testDNSZone := fmt.Sprintf("test-basic.%s", testDomain)
 	l.Debugf("TestAccScalewayDomainRecord_Basic: test dns zone: %s", testDNSZone)
 
 	name := "tf"
@@ -165,14 +170,9 @@ func TestAccScalewayDomainRecord_Basic(t *testing.T) {
 
 func TestAccScalewayDomainRecord_GeoIP(t *testing.T) {
 	tt := NewTestTools(t)
-	// Please note: don't use `defer tt.Cleanup()` to avoid store personnal domain in cassette testdata
+	defer tt.Cleanup()
 
-	uuid, err := uuid.GenerateUUID()
-	if err != nil {
-		l.Errorf("error when generate UUID: %s", err)
-		return
-	}
-	testDNSZone := fmt.Sprintf("%s.%s", uuid, testDomain)
+	testDNSZone := fmt.Sprintf("test-geoip.%s", testDomain)
 	l.Debugf("TestAccScalewayDomainRecord_GeoIP: test dns zone: %s", testDNSZone)
 
 	name := "tf_geo_ip"
@@ -266,14 +266,9 @@ func TestAccScalewayDomainRecord_GeoIP(t *testing.T) {
 
 func TestAccScalewayDomainRecord_HTTPService(t *testing.T) {
 	tt := NewTestTools(t)
-	// Please note: don't use `defer tt.Cleanup()` to avoid store personnal domain in cassette testdata
+	defer tt.Cleanup()
 
-	uuid, err := uuid.GenerateUUID()
-	if err != nil {
-		l.Errorf("error when generate UUID: %s", err)
-		return
-	}
-	testDNSZone := fmt.Sprintf("%s.%s", uuid, testDomain)
+	testDNSZone := fmt.Sprintf("test-httpservice.%s", testDomain)
 	l.Debugf("TestAccScalewayDomainRecord_HTTPService: test dns zone: %s", testDNSZone)
 
 	name := "tf_http_service"
@@ -358,14 +353,9 @@ func TestAccScalewayDomainRecord_HTTPService(t *testing.T) {
 
 func TestAccScalewayDomainRecord_View(t *testing.T) {
 	tt := NewTestTools(t)
-	// Please note: don't use `defer tt.Cleanup()` to avoid store personnal domain in cassette testdata
+	defer tt.Cleanup()
 
-	uuid, err := uuid.GenerateUUID()
-	if err != nil {
-		l.Errorf("error when generate UUID: %s", err)
-		return
-	}
-	testDNSZone := fmt.Sprintf("%s.%s", uuid, testDomain)
+	testDNSZone := fmt.Sprintf("test-view.%s", testDomain)
 	l.Debugf("TestAccScalewayDomainRecord_View: test dns zone: %s", testDNSZone)
 
 	name := "tf_view"
@@ -455,14 +445,9 @@ func TestAccScalewayDomainRecord_View(t *testing.T) {
 
 func TestAccScalewayDomainRecord_Weighted(t *testing.T) {
 	tt := NewTestTools(t)
-	// Please note: don't use `defer tt.Cleanup()` to avoid store personnal domain in cassette testdata
+	defer tt.Cleanup()
 
-	uuid, err := uuid.GenerateUUID()
-	if err != nil {
-		l.Errorf("error when generate UUID: %s", err)
-		return
-	}
-	testDNSZone := fmt.Sprintf("%s.%s", uuid, testDomain)
+	testDNSZone := fmt.Sprintf("test-weighted.%s", testDomain)
 	l.Debugf("TestAccScalewayDomainRecord_Weighted: test dns zone: %s", testDNSZone)
 
 	name := "tf_weighted"
