@@ -13,7 +13,7 @@ interactions:
     url: https://api.scaleway.com/domain/v2beta1/dns-zones/test-weighted.scaleway-terraform.com/records
     method: PATCH
   response:
-    body: '{"records":[{"id":"7f5a68ee-38ac-4e43-9c07-90b535d9ccea","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":1},{"ip":"4.3.2.1","weight":2}]}}]}'
+    body: '{"records":[{"id":"73ad828b-63ac-49f0-b9e9-88d516124096","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":1},{"ip":"4.3.2.1","weight":2}]}}]}'
     headers:
       Content-Length:
       - "242"
@@ -22,7 +22,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:33 GMT
+      - Mon, 30 Aug 2021 13:54:53 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -32,7 +32,7 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - bfc13c85-da1b-4b2c-8d9a-46ce452afd12
+      - 7aa60f86-10ac-4896-bebd-c11e2a8c860a
     status: 200 OK
     code: 200
     duration: ""
@@ -46,7 +46,7 @@ interactions:
     url: https://api.scaleway.com/domain/v2beta1/dns-zones/test-weighted.scaleway-terraform.com/records?name=tf_weighted&order_by=name_asc&page=1&type=A
     method: GET
   response:
-    body: '{"total_count":1,"records":[{"id":"7f5a68ee-38ac-4e43-9c07-90b535d9ccea","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":1},{"ip":"4.3.2.1","weight":2}]}}]}'
+    body: '{"total_count":1,"records":[{"id":"73ad828b-63ac-49f0-b9e9-88d516124096","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":1},{"ip":"4.3.2.1","weight":2}]}}]}'
     headers:
       Content-Length:
       - "258"
@@ -55,7 +55,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:34 GMT
+      - Mon, 30 Aug 2021 13:54:53 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -65,7 +65,7 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - 1b27be0e-ff83-40c7-8ef3-1355510ca094
+      - 92e3c854-e497-43ce-b65e-9b9fe93ecccd
     status: 200 OK
     code: 200
     duration: ""
@@ -79,7 +79,7 @@ interactions:
     url: https://api.scaleway.com/domain/v2beta1/dns-zones/test-weighted.scaleway-terraform.com/records?name=&order_by=name_asc&type=unknown
     method: GET
   response:
-    body: '{"total_count":3,"records":[{"id":"2d2e71de-6e59-455c-8081-ac8a7f8d47af","data":"ns0.dom.scw.cloud.","name":"","priority":0,"ttl":600,"type":"NS","comment":null},{"id":"a5e80678-299b-4e1f-b5c2-4f62c58e5983","data":"ns1.dom.scw.cloud.","name":"","priority":0,"ttl":600,"type":"NS","comment":null},{"id":"7f5a68ee-38ac-4e43-9c07-90b535d9ccea","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":1},{"ip":"4.3.2.1","weight":2}]}}]}'
+    body: '{"total_count":3,"records":[{"id":"f477a90a-4875-4811-9664-d3d752fbbf7c","data":"ns0.dom.scw.cloud.","name":"","priority":0,"ttl":600,"type":"NS","comment":null},{"id":"5ff12926-d258-436e-9be2-ce7be4876f4b","data":"ns1.dom.scw.cloud.","name":"","priority":0,"ttl":600,"type":"NS","comment":null},{"id":"73ad828b-63ac-49f0-b9e9-88d516124096","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":1},{"ip":"4.3.2.1","weight":2}]}}]}'
     headers:
       Content-Length:
       - "526"
@@ -88,7 +88,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:34 GMT
+      - Mon, 30 Aug 2021 13:54:53 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -98,7 +98,7 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - 488e864b-d55b-4f7d-ae4d-756e98a09b8b
+      - 21edfcb6-218f-4ffe-b425-08b0ff45b630
     status: 200 OK
     code: 200
     duration: ""
@@ -112,7 +112,7 @@ interactions:
     url: https://api.scaleway.com/domain/v2beta1/dns-zones/test-weighted.scaleway-terraform.com/records?name=tf_weighted&order_by=name_asc&page=1&type=A
     method: GET
   response:
-    body: '{"total_count":1,"records":[{"id":"7f5a68ee-38ac-4e43-9c07-90b535d9ccea","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":1},{"ip":"4.3.2.1","weight":2}]}}]}'
+    body: '{"total_count":1,"records":[{"id":"73ad828b-63ac-49f0-b9e9-88d516124096","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":1},{"ip":"4.3.2.1","weight":2}]}}]}'
     headers:
       Content-Length:
       - "258"
@@ -121,7 +121,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:34 GMT
+      - Mon, 30 Aug 2021 13:54:54 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -131,7 +131,7 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - 644c6bc0-e49f-4d80-8378-ce02a9b393f0
+      - 76014e55-6db3-420b-9bd1-6779e2393da6
     status: 200 OK
     code: 200
     duration: ""
@@ -145,7 +145,7 @@ interactions:
     url: https://api.scaleway.com/domain/v2beta1/dns-zones/test-weighted.scaleway-terraform.com/records?name=tf_weighted&order_by=name_asc&page=1&type=A
     method: GET
   response:
-    body: '{"total_count":1,"records":[{"id":"7f5a68ee-38ac-4e43-9c07-90b535d9ccea","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":1},{"ip":"4.3.2.1","weight":2}]}}]}'
+    body: '{"total_count":1,"records":[{"id":"73ad828b-63ac-49f0-b9e9-88d516124096","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":1},{"ip":"4.3.2.1","weight":2}]}}]}'
     headers:
       Content-Length:
       - "258"
@@ -154,7 +154,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:35 GMT
+      - Mon, 30 Aug 2021 13:54:55 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -164,12 +164,12 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - 5f45074b-2c95-4394-b4b6-452686514e6b
+      - e204f995-0bf3-4a31-b42f-b8cb5e559cb1
     status: 200 OK
     code: 200
     duration: ""
 - request:
-    body: '{"changes":[{"set":{"id":"7f5a68ee-38ac-4e43-9c07-90b535d9ccea","records":[{"data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":2},{"ip":"4.3.2.1","weight":1},{"ip":"5.6.7.8","weight":999}]},"id":""}]}}],"return_all_records":false}'
+    body: '{"changes":[{"set":{"id":"73ad828b-63ac-49f0-b9e9-88d516124096","records":[{"data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":2},{"ip":"4.3.2.1","weight":1},{"ip":"5.6.7.8","weight":999}]},"id":""}]}}],"return_all_records":false}'
     form: {}
     headers:
       Content-Type:
@@ -180,7 +180,7 @@ interactions:
     url: https://api.scaleway.com/domain/v2beta1/dns-zones/test-weighted.scaleway-terraform.com/records
     method: PATCH
   response:
-    body: '{"records":[{"id":"7f5a68ee-38ac-4e43-9c07-90b535d9ccea","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":2},{"ip":"4.3.2.1","weight":1},{"ip":"5.6.7.8","weight":999}]}}]}'
+    body: '{"records":[{"id":"73ad828b-63ac-49f0-b9e9-88d516124096","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":2},{"ip":"4.3.2.1","weight":1},{"ip":"5.6.7.8","weight":999}]}}]}'
     headers:
       Content-Length:
       - "272"
@@ -189,7 +189,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:36 GMT
+      - Mon, 30 Aug 2021 13:54:55 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -199,7 +199,7 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - 96d3308c-bef0-4747-bead-90b6c7c377df
+      - 18db2528-0ed7-4fc5-b703-08039b195d66
     status: 200 OK
     code: 200
     duration: ""
@@ -213,7 +213,7 @@ interactions:
     url: https://api.scaleway.com/domain/v2beta1/dns-zones/test-weighted.scaleway-terraform.com/records?name=tf_weighted&order_by=name_asc&page=1&type=A
     method: GET
   response:
-    body: '{"total_count":1,"records":[{"id":"7f5a68ee-38ac-4e43-9c07-90b535d9ccea","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":2},{"ip":"4.3.2.1","weight":1},{"ip":"5.6.7.8","weight":999}]}}]}'
+    body: '{"total_count":1,"records":[{"id":"73ad828b-63ac-49f0-b9e9-88d516124096","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":2},{"ip":"4.3.2.1","weight":1},{"ip":"5.6.7.8","weight":999}]}}]}'
     headers:
       Content-Length:
       - "288"
@@ -222,7 +222,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:36 GMT
+      - Mon, 30 Aug 2021 13:54:56 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -232,7 +232,7 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - 88fe7a69-c600-453c-af96-93b588227767
+      - c6e727b6-3390-43e4-aaab-d7be3e0355a8
     status: 200 OK
     code: 200
     duration: ""
@@ -246,7 +246,7 @@ interactions:
     url: https://api.scaleway.com/domain/v2beta1/dns-zones/test-weighted.scaleway-terraform.com/records?name=&order_by=name_asc&type=unknown
     method: GET
   response:
-    body: '{"total_count":3,"records":[{"id":"2d2e71de-6e59-455c-8081-ac8a7f8d47af","data":"ns0.dom.scw.cloud.","name":"","priority":0,"ttl":600,"type":"NS","comment":null},{"id":"a5e80678-299b-4e1f-b5c2-4f62c58e5983","data":"ns1.dom.scw.cloud.","name":"","priority":0,"ttl":600,"type":"NS","comment":null},{"id":"7f5a68ee-38ac-4e43-9c07-90b535d9ccea","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":2},{"ip":"4.3.2.1","weight":1},{"ip":"5.6.7.8","weight":999}]}}]}'
+    body: '{"total_count":3,"records":[{"id":"f477a90a-4875-4811-9664-d3d752fbbf7c","data":"ns0.dom.scw.cloud.","name":"","priority":0,"ttl":600,"type":"NS","comment":null},{"id":"5ff12926-d258-436e-9be2-ce7be4876f4b","data":"ns1.dom.scw.cloud.","name":"","priority":0,"ttl":600,"type":"NS","comment":null},{"id":"73ad828b-63ac-49f0-b9e9-88d516124096","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":2},{"ip":"4.3.2.1","weight":1},{"ip":"5.6.7.8","weight":999}]}}]}'
     headers:
       Content-Length:
       - "556"
@@ -255,7 +255,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:36 GMT
+      - Mon, 30 Aug 2021 13:54:56 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -265,7 +265,7 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - 0ad8abad-faf9-4918-81ad-b5f4c3cb69ef
+      - 4cb1d9c8-637e-4805-b2f2-b136b3adf0ce
     status: 200 OK
     code: 200
     duration: ""
@@ -279,7 +279,7 @@ interactions:
     url: https://api.scaleway.com/domain/v2beta1/dns-zones/test-weighted.scaleway-terraform.com/records?name=tf_weighted&order_by=name_asc&page=1&type=A
     method: GET
   response:
-    body: '{"total_count":1,"records":[{"id":"7f5a68ee-38ac-4e43-9c07-90b535d9ccea","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":2},{"ip":"4.3.2.1","weight":1},{"ip":"5.6.7.8","weight":999}]}}]}'
+    body: '{"total_count":1,"records":[{"id":"73ad828b-63ac-49f0-b9e9-88d516124096","data":"127.0.0.5","name":"tf_weighted","priority":0,"ttl":3600,"type":"A","comment":null,"weighted_config":{"weighted_ips":[{"ip":"1.2.3.4","weight":2},{"ip":"4.3.2.1","weight":1},{"ip":"5.6.7.8","weight":999}]}}]}'
     headers:
       Content-Length:
       - "288"
@@ -288,7 +288,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:36 GMT
+      - Mon, 30 Aug 2021 13:54:56 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -298,12 +298,12 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - 0e03843e-bb8d-4ef8-bc59-50b25db2a530
+      - 4590a550-476a-417b-9ff6-2cd2d8421cb4
     status: 200 OK
     code: 200
     duration: ""
 - request:
-    body: '{"changes":[{"delete":{"id":"7f5a68ee-38ac-4e43-9c07-90b535d9ccea"}}],"return_all_records":false}'
+    body: '{"changes":[{"delete":{"id":"73ad828b-63ac-49f0-b9e9-88d516124096"}}],"return_all_records":false}'
     form: {}
     headers:
       Content-Type:
@@ -323,7 +323,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:37 GMT
+      - Mon, 30 Aug 2021 13:54:57 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -333,7 +333,7 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - 87ec611c-599d-428b-aee9-ba9615077343
+      - 9b53684a-8101-44d5-a3a3-3d19f2418e1f
     status: 200 OK
     code: 200
     duration: ""
@@ -347,7 +347,7 @@ interactions:
     url: https://api.scaleway.com/domain/v2beta1/dns-zones/test-weighted.scaleway-terraform.com/records?name=&order_by=name_asc&page=1&type=unknown
     method: GET
   response:
-    body: '{"total_count":2,"records":[{"id":"2d2e71de-6e59-455c-8081-ac8a7f8d47af","data":"ns0.dom.scw.cloud.","name":"","priority":0,"ttl":600,"type":"NS","comment":null},{"id":"a5e80678-299b-4e1f-b5c2-4f62c58e5983","data":"ns1.dom.scw.cloud.","name":"","priority":0,"ttl":600,"type":"NS","comment":null}]}'
+    body: '{"total_count":2,"records":[{"id":"f477a90a-4875-4811-9664-d3d752fbbf7c","data":"ns0.dom.scw.cloud.","name":"","priority":0,"ttl":600,"type":"NS","comment":null},{"id":"5ff12926-d258-436e-9be2-ce7be4876f4b","data":"ns1.dom.scw.cloud.","name":"","priority":0,"ttl":600,"type":"NS","comment":null}]}'
     headers:
       Content-Length:
       - "297"
@@ -356,7 +356,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:37 GMT
+      - Mon, 30 Aug 2021 13:54:57 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -366,7 +366,7 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - a1acb26a-0fd7-4ea3-96f2-2392cc8fc609
+      - 96478f20-6e28-4c6a-8557-089537421e60
     status: 200 OK
     code: 200
     duration: ""
@@ -389,7 +389,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:37 GMT
+      - Mon, 30 Aug 2021 13:54:58 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -399,7 +399,7 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - df893b05-bdf1-4a00-9563-5077d4211807
+      - 684b1848-3dc3-49a0-a77c-1d8f07f7c73f
     status: 200 OK
     code: 200
     duration: ""
@@ -422,7 +422,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 20 Aug 2021 13:45:37 GMT
+      - Mon, 30 Aug 2021 13:54:58 GMT
       Server:
       - Scaleway API-Gateway
       Strict-Transport-Security:
@@ -432,7 +432,7 @@ interactions:
       X-Frame-Options:
       - DENY
       X-Request-Id:
-      - be7c76ee-4dce-4838-ba97-343a2a296c8d
+      - 4d54f00f-ac6f-4d9c-8572-4e60354aaf1f
     status: 403 Forbidden
     code: 403
     duration: ""
